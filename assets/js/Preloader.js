@@ -8,7 +8,7 @@ MyGame.Preloader.prototype = {
 
     this.load.image("ground", "img/ground.png");
     this.load.image("platform-360", "img/platform-360.png");
-    this.load.image("platform-240", "img/platform-240.png");
+    this.load.image("platform-240", "img/platform-270.png");
     this.load.image("platform-180", "img/platform-180.png");
     this.load.image("platform-90", "img/platform-90.png");
     this.load.image("arrowButton", "img/arrowButton.png");
