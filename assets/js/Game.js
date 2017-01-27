@@ -12,6 +12,14 @@ MyGame.Game.prototype = {
     this.JUMPING_SPEED = 550;
   },
 
+
+  start: function() {
+
+
+
+  },
+
+
   create: function() {
 
     this.ground = this.add.sprite(0, 628, "ground");
@@ -40,8 +48,9 @@ MyGame.Game.prototype = {
       fire = this.fires.create(element.x, element.y, "fire");
       fire.animations.add("fire", [0, 1], 4, true);
       fire.play('fire');
+      game.physics.arcade.enable(fire);
     }, this);
-    this.fires.setAll("body.allowGravity", false);
+    //this.fires.setAll("body.allowGravity", false);
 
     // goal
     this.goal = this.add.sprite(this.levelData.goal.x, this.levelData.goal.y, "goal");
@@ -81,7 +90,7 @@ MyGame.Game.prototype = {
     //this.physics.arcade.collide(this.barrels, this.platforms);
     //this.physics.arcade.collide(this.barrels, this.ground);
 
-    this.physics.arcade.overlap(this.player, this.fires, this.killPlayer);
+//    this.physics.arcade.overlap(this.player, this.fires, this.killPlayer);
   //  this.physics.arcade.overlap(this.player, this.barrels, this.killPlayer);
     this.physics.arcade.overlap(this.player, this.goal, this.win);
 
