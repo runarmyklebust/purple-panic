@@ -14,6 +14,8 @@ MyGame.Preloader.prototype = {
     this.load.image("goal", "img/gorilla3.png");
     this.load.image("splash", "img/splash.png");
 
+      this.load.image("push-start", "img/push-start.png");
+
     this.load.spritesheet("player", "img/player.png", 28, 30, 5, 1, 1);
     this.load.spritesheet("fire", "img/fire_spritesheet.png", 20, 21, 2, 1, 1);
 
