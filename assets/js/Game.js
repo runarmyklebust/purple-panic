@@ -45,7 +45,7 @@ MyGame.Game.prototype = {
     this.walls = this.add.group();
     this.walls.enableBody = true;
     this.levelData.wallsData.forEach(function(element) {
-        this.walls.create(element.x, element.y, "wall");
+        this.walls.create(element.x, element.y, "stone");
     }, this);
     this.walls.setAll("body.immovable", true);
     this.walls.setAll("body.allowGravity", false);
@@ -57,8 +57,6 @@ MyGame.Game.prototype = {
     var fire;
     this.levelData.fireData.forEach(function(element){
       fire = this.fires.create(element.x, element.y, "fire");
-      fire.animations.add("fire", [0, 1], 4, true);
-      fire.play('fire');
       game.physics.arcade.enable(fire);
 
     }, this);
