@@ -27,6 +27,8 @@ MyGame.Game.prototype = {
     this.ground.body.allowGravity = false;
     this.ground.body.immovable = true;
 
+      this.stage.backgroundColor = "#6FAEF8";
+
     this.jumpSound =  this.sound.add("jump");
     this.pushSound =  this.sound.add("push");
 
