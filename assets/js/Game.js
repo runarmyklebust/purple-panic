@@ -27,7 +27,10 @@ MyGame.Game.prototype = {
     this.ground.body.allowGravity = false;
     this.ground.body.immovable = true;
 
+      this.stage.backgroundColor = "#A2C9FF";
+
     this.jumpSound =  this.sound.add("jump");
+    this.pushSound =  this.sound.add("push");
 
     // level data
     this.levelData = JSON.parse(this.game.cache.getText("level"));
