@@ -49,6 +49,7 @@ MyGame.Game.prototype = {
       fire.animations.add("fire", [0, 1], 4, true);
       fire.play('fire');
       game.physics.arcade.enable(fire);
+    
     }, this);
     //this.fires.setAll("body.allowGravity", false);
 
@@ -86,6 +87,9 @@ MyGame.Game.prototype = {
 
     this.physics.arcade.collide(this.player, this.platforms);
     this.physics.arcade.collide(this.player, this.ground);
+    this.physics.arcade.collide(this.player, this.fires);
+
+    this.physics.arcade.collide(this.fires, this.platforms);
 
     //this.physics.arcade.collide(this.barrels, this.platforms);
     //this.physics.arcade.collide(this.barrels, this.ground);
