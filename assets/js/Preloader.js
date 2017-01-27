@@ -9,6 +9,8 @@ MyGame.Preloader.prototype = {
     this.load.image("ground", "img/ground.png");
     this.load.image("platform-360", "img/platform-360.png");
     this.load.image("platform-270", "img/platform-270.png");
+    this.load.image("platform-210", "img/platform-210.png");
+    this.load.image("platform-220", "img/platform-220.png");
     this.load.image("platform-180", "img/platform-180.png");
     this.load.image("platform-90", "img/platform-90.png");
     this.load.image("arrowButton", "img/arrowButton.png");
@@ -18,7 +20,7 @@ MyGame.Preloader.prototype = {
     this.load.image("wall", "img/barrel.png");
     this.load.image("splash", "img/splash.png");
     this.load.image("crate", "img/crate.png");
-    
+
      this.load.image("push-start", "img/push-start.png");
 
      this.load.audio('jump','audio/jump.mp3');
