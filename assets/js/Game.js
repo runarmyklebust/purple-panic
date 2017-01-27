@@ -56,6 +56,10 @@ MyGame.Game.prototype = {
     this.player.customParams = {};
     this.player.body.collideWorldBounds = true;
 
+
+
+
+
     // barrels
   //  this.barrels = this.add.group();
   //  this.barrels.enableBody = true;
