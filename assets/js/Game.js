@@ -50,14 +50,15 @@ MyGame.Game.prototype = {
     this.walls.setAll("body.immovable", true);
     this.walls.setAll("body.allowGravity", false);
 
-    // fires
-    this.fires = this.add.group();
-    this.fires.enableBody = true;
+    // crates
+    this.crates = this.add.group();
+    this.crates.enableBody = true;
 
-    var fire;
-    this.levelData.fireData.forEach(function(element){
-      fire = this.fires.create(element.x, element.y, "fire");
-      game.physics.arcade.enable(fire);
+    var crate;
+    this.levelData.cratesData.forEach(function(element){
+      crate = this.crates.create(element.x, element.y, "crate");
+      game.physics.arcade.enable(crate);
+      crate.body.collideWorldBounds = true;
 
     }, this);
     //this.fires.setAll("body.allowGravity", false);
@@ -100,12 +101,12 @@ MyGame.Game.prototype = {
 
     this.physics.arcade.collide(this.player, this.platforms);
     this.physics.arcade.collide(this.player, this.ground);
-    this.physics.arcade.collide(this.player, this.fires);
+    this.physics.arcade.collide(this.player, this.crates);
     this.physics.arcade.collide(this.player, this.walls);
-    this.physics.arcade.collide(this.fires, this.platforms);
-    this.physics.arcade.collide(this.fires, this.walls);
-    this.physics.arcade.collide(this.fires, this.ground);
-    this.physics.arcade.collide(this.fires, this.fires);
+    this.physics.arcade.collide(this.crates, this.platforms);
+    this.physics.arcade.collide(this.crates, this.walls);
+    this.physics.arcade.collide(this.crates, this.ground);
+    this.physics.arcade.collide(this.crates, this.crates);
 
 //    this.physics.arcade.overlap(this.player, this.fires, this.killPlayer);
   //  this.physics.arcade.overlap(this.player, this.barrels, this.killPlayer);
