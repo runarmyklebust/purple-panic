@@ -7,12 +7,15 @@ MyGame.Preloader.prototype = {
     this.load.path = "assets/";
 
     this.load.image("ground", "img/ground.png");
-    this.load.image("platform", "img/platform.png");
+    this.load.image("platform-360", "img/platform-360.png");
+    this.load.image("platform-240", "img/platform-240.png");
+    this.load.image("platform-180", "img/platform-180.png");
+    this.load.image("platform-90", "img/platform-90.png");
     this.load.image("arrowButton", "img/arrowButton.png");
     this.load.image("actionButton", "img/actionButton.png");
     this.load.image("barrel", "img/barrel.png");
     this.load.image("goal", "img/gorilla3.png");
-    this.load.image("splash", "img/splash.png");
+    this.load.image("wall", "img/barrel.png");
 
       this.load.image("push-start", "img/push-start.png");
 
