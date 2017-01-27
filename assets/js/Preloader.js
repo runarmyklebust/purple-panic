@@ -17,7 +17,11 @@ MyGame.Preloader.prototype = {
     this.load.image("goal", "img/gorilla3.png");
     this.load.image("wall", "img/barrel.png");
 
-      this.load.image("push-start", "img/push-start.png");
+     this.load.image("push-start", "img/push-start.png");
+
+     this.load.audio('jump','audio/jump.mp3');
+     //this.load.audio('background', 'assets/audio/background.mp3');
+     //this.load.audio('next_level', 'assets/audio/next_level.mp3');
 
     this.load.spritesheet("player", "img/player.png", 28, 30, 5, 1, 1);
     this.load.spritesheet("fire", "img/fire_spritesheet.png", 20, 21, 2, 1, 1);

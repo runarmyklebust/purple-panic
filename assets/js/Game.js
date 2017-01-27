@@ -27,6 +27,8 @@ MyGame.Game.prototype = {
     this.ground.body.allowGravity = false;
     this.ground.body.immovable = true;
 
+    this.jumpSound =  this.sound.add("jump");
+
     // level data
     this.levelData = JSON.parse(this.game.cache.getText("level"));
 
@@ -130,6 +132,7 @@ MyGame.Game.prototype = {
     if ((this.cursors.up.isDown || this.player.customParams.mustJump) && this.player.body.touching.down) {
       this.player.body.velocity.y = -this.JUMPING_SPEED;
       this.player.customParams.mustJump = false;
+       this.jumpSound.play();
     }
 
   //  this.barrels.forEach(function(barrel){
