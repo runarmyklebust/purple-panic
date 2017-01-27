@@ -105,6 +105,7 @@ MyGame.Game.prototype = {
     this.physics.arcade.collide(this.fires, this.platforms);
     this.physics.arcade.collide(this.fires, this.walls);
     this.physics.arcade.collide(this.fires, this.ground);
+    this.physics.arcade.collide(this.fires, this.fires);
 
 //    this.physics.arcade.overlap(this.player, this.fires, this.killPlayer);
   //  this.physics.arcade.overlap(this.player, this.barrels, this.killPlayer);
