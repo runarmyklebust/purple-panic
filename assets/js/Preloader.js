@@ -27,8 +27,7 @@ MyGame.Preloader.prototype = {
 
      this.load.audio('jump','audio/jump.mp3');
      this.load.audio('jump','audio/push.mp3');
-     //this.load.audio('background', 'assets/audio/background.mp3');
-     //this.load.audio('next_level', 'assets/audio/next_level.mp3');
+     this.load.audio('start','audio/start.wav');
 
     this.load.spritesheet("player", "img/player.png", 28, 30, 5, 1, 1);
 

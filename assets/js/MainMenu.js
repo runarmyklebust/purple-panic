@@ -24,7 +24,8 @@ MyGame.MainMenu.prototype = {
 
 
 
-          space_key.onDown.add(this.removeLogo, this);/*
+          space_key.onDown.add(this.removeLogo, this);
+          this.sound.add("start").play();/*
 
       if (this.cursors.left.clicked) {
         console.log('test');
