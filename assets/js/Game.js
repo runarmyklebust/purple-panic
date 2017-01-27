@@ -31,6 +31,7 @@ MyGame.Game.prototype = {
 
         this.jumpSound = this.sound.add("jump");
         this.pushSound = this.sound.add("push");
+        this.killSound = this.sound.add("kill");
 
         // level data
         this.levelData = JSON.parse(this.game.cache.getText("level"));
@@ -210,6 +211,7 @@ MyGame.Game.prototype = {
 
     killPlayer: function (player, fire) {
         console.log("Ouch!");
+        this.killSound.play();
         game.state.start("Game");
     },
 
