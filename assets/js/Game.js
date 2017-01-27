@@ -28,6 +28,7 @@ MyGame.Game.prototype = {
     this.ground.body.immovable = true;
 
     this.jumpSound =  this.sound.add("jump");
+    this.pushSound =  this.sound.add("push");
 
     // level data
     this.levelData = JSON.parse(this.game.cache.getText("level"));
