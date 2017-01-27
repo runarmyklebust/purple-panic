@@ -27,6 +27,8 @@ MyGame.Game.prototype = {
     this.ground.body.allowGravity = false;
     this.ground.body.immovable = true;
 
+    this.jumpSound =  this.sound.add("jump");
+
     // level data
     this.levelData = JSON.parse(this.game.cache.getText("level"));
 
@@ -43,7 +45,7 @@ MyGame.Game.prototype = {
     this.walls = this.add.group();
     this.walls.enableBody = true;
     this.levelData.wallsData.forEach(function(element) {
-        this.walls.create(element.x, element.y, "wall");
+        this.walls.create(element.x, element.y, "stone");
     }, this);
     this.walls.setAll("body.immovable", true);
     this.walls.setAll("body.allowGravity", false);
@@ -55,8 +57,6 @@ MyGame.Game.prototype = {
     var fire;
     this.levelData.fireData.forEach(function(element){
       fire = this.fires.create(element.x, element.y, "fire");
-      fire.animations.add("fire", [0, 1], 4, true);
-      fire.play('fire');
       game.physics.arcade.enable(fire);
 
     }, this);
@@ -130,6 +130,7 @@ MyGame.Game.prototype = {
     if ((this.cursors.up.isDown || this.player.customParams.mustJump) && this.player.body.touching.down) {
       this.player.body.velocity.y = -this.JUMPING_SPEED;
       this.player.customParams.mustJump = false;
+       this.jumpSound.play();
     }
 
   //  this.barrels.forEach(function(barrel){
