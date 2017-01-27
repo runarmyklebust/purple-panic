@@ -34,10 +34,19 @@ MyGame.Game.prototype = {
     this.platforms = this.add.group();
     this.platforms.enableBody = true;
     this.levelData.platformData.forEach(function(element) {
-      this.platforms.create(element.x, element.y, "platform");
+      this.platforms.create(element.x, element.y, "platform-" + element.size);
     }, this);
     this.platforms.setAll("body.immovable", true);
     this.platforms.setAll("body.allowGravity", false);
+
+    // Walls
+    this.walls = this.add.group();
+    this.walls.enableBody = true;
+    this.levelData.wallsData.forEach(function(element) {
+        this.walls.create(element.x, element.y, "wall");
+    }, this);
+    this.walls.setAll("body.immovable", true);
+    this.walls.setAll("body.allowGravity", false);
 
     // fires
     this.fires = this.add.group();
@@ -49,7 +58,7 @@ MyGame.Game.prototype = {
       fire.animations.add("fire", [0, 1], 4, true);
       fire.play('fire');
       game.physics.arcade.enable(fire);
-    
+
     }, this);
     //this.fires.setAll("body.allowGravity", false);
 
@@ -59,7 +68,7 @@ MyGame.Game.prototype = {
     this.goal.body.allowGravity = false;
 
     // player
-    this.player = this.add.sprite(10, 545, "player", 3);
+    this.player = this.add.sprite(10, 600, "player", 3);
     this.player.anchor.setTo(0.5);
     this.player.animations.add("walking", [0, 1, 2, 1], 6, true);
     this.physics.arcade.enable(this.player);
@@ -92,11 +101,10 @@ MyGame.Game.prototype = {
     this.physics.arcade.collide(this.player, this.platforms);
     this.physics.arcade.collide(this.player, this.ground);
     this.physics.arcade.collide(this.player, this.fires);
-
+    this.physics.arcade.collide(this.player, this.walls);
     this.physics.arcade.collide(this.fires, this.platforms);
-
-    //this.physics.arcade.collide(this.barrels, this.platforms);
-    //this.physics.arcade.collide(this.barrels, this.ground);
+    this.physics.arcade.collide(this.fires, this.walls);
+    this.physics.arcade.collide(this.fires, this.ground);
 
 //    this.physics.arcade.overlap(this.player, this.fires, this.killPlayer);
   //  this.physics.arcade.overlap(this.player, this.barrels, this.killPlayer);
