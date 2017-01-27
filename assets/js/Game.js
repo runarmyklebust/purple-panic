@@ -84,10 +84,10 @@ MyGame.Game.prototype = {
 
 
     // barrels
-  //  this.barrels = this.add.group();
-  //  this.barrels.enableBody = true;
-//    this.createBarrel();
-//    this.barrelCreator = this.game.time.events.loop(Phaser.Timer.SECOND * this.levelData.barrelFrequency, this.createBarrel, this);
+    this.barrels = this.add.group();
+    this.barrels.enableBody = true;
+    this.createBarrel();
+    this.barrelCreator = this.game.time.events.loop(Phaser.Timer.SECOND * this.levelData.barrelFrequency, this.createBarrel, this);
 
     // camera
     this.camera.follow(this.player);
@@ -111,8 +111,17 @@ MyGame.Game.prototype = {
     this.physics.arcade.collide(this.crates, this.ground);
     this.physics.arcade.collide(this.crates, this.crates);
 
+      this.physics.arcade.collide(this.barrels, this.platforms);
+      this.physics.arcade.collide(this.barrels, this.ground);
+
+      this.physics.arcade.collide(this.barrels, this.walls);
+      this.physics.arcade.collide(this.barrels, this.crates);
+
 //    this.physics.arcade.overlap(this.player, this.fires, this.killPlayer);
-  //  this.physics.arcade.overlap(this.player, this.barrels, this.killPlayer);
+    //this.physics.arcade.overlap(this.player, this.barrels, this.collideEnemy(this.player, this.barrels));
+
+
+      this.physics.arcade.overlap(this.player, this.barrels, this.collideEnemy, null, this);
     this.physics.arcade.overlap(this.player, this.goal, this.win);
 
     // Controls
@@ -138,26 +147,51 @@ MyGame.Game.prototype = {
        this.jumpSound.play();
     }
 
-  //  this.barrels.forEach(function(barrel){
-  //    if(barrel.x < 10 && barrel.y > 600){
-//        barrel.kill();
-//      }
-//    }, this);
+    this.barrels.forEach(function(barrel){
+
+        //this.physics.arcade.overlap(this.player, barrel, this.collideEnemy(this.player, barrel));
+
+      if(barrel.x < 10 && barrel.y > 600){
+        barrel.kill();
+
+
+
+      }
+    }, this);
 
   },
+
+    collideEnemy: function(player, enemy) {
+      console.log('enemy collide');
+        if (enemy.body.touching.up) {
+            //Call a jump function or something here...
+            // player.body.velocity.y = -200;
+            // Maybe put the enemy into a different group so it doesn't collide with the player anymore...
+            //   enemy.kill()
+            enemy.kill();
+        }
+        else {
+            //You would probably want something a little more than this...
+            // player.kill();
+
+            console.log('adsf');
+
+            this.killPlayer();
+        }
+    },
 
   createOnscreenControls: function() {
 
     this.leftArrow = this.add.button(20, 535, "arrowButton");
-    this.leftArrow.alpha = 0.5;
+    this.leftArrow.alpha = 0;
     this.leftArrow.fixedToCamera = true;
 
     this.rightArrow = this.add.button(110, 535, "arrowButton");
-    this.rightArrow.alpha = 0.5;
+    this.rightArrow.alpha = 0;
     this.rightArrow.fixedToCamera = true;
 
     this.actionButton = this.add.button(280, 535, "actionButton");
-    this.actionButton.alpha = 0.5;
+    this.actionButton.alpha = 0;
     this.actionButton.fixedToCamera = true;
 
     // left
@@ -221,6 +255,10 @@ MyGame.Game.prototype = {
     barrel.reset(this.levelData.goal.x, this.levelData.goal.y);
     barrel.body.velocity.x = this.levelData.barrelSpeed;
     barrel.body.collideWorldBounds = true;
+
+
+      barrel.anchor.setTo(0.5);
+      barrel.animations.add("walking", [0, 1, 2, 1], 6, true);
     barrel.body.bounce.set(1, 0);
 
   },

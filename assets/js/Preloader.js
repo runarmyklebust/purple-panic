@@ -18,6 +18,8 @@ MyGame.Preloader.prototype = {
     this.load.image("wall", "img/barrel.png");
     this.load.image("splash", "img/splash.png");
     this.load.image("crate", "img/crate.png");
+
+      this.load.spritesheet("barrel", "img/player.png", 28, 30, 5, 1, 1);
     
      this.load.image("push-start", "img/push-start.png");
 
