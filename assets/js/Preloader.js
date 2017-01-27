@@ -13,11 +13,13 @@ MyGame.Preloader.prototype = {
     this.load.image("platform-220", "img/platform-220.png");
     this.load.image("platform-180", "img/platform-180.png");
     this.load.image("platform-90", "img/platform-90.png");
+    this.load.image("platform-45", "img/platform-45.png");
     this.load.image("arrowButton", "img/arrowButton.png");
     this.load.image("actionButton", "img/actionButton.png");
     this.load.image("stone", "img/stone.png");
     this.load.image("goal", "img/gorilla3.png");
     this.load.image("wall", "img/barrel.png");
+    this.load.image("tree", "img/tree.png");
     this.load.image("splash", "img/splash.png");
     this.load.image("crate", "img/crate.png");
 
